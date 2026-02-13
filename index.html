@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>💌 Mensaje para ti</title>
+  <meta name="description" content="Un mensaje especial con corazones y una sorpresa romántica." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <!-- Overlay INICIO (primero para que quede por encima de todo) -->
+  <div id="start-screen" class="start-screen" role="dialog" aria-modal="true">
+    <canvas id="hearts-canvas" aria-hidden="true"></canvas>
+    <h1 class="title">¿Querés ser mi San Valentín? 💖</h1>
+
+    <p id="val-countdown" class="countdown" aria-live="polite" title="Cuenta regresiva a San Valentín">
+      00d · 00h · 00m · 00s
+    </p>
+
+    <div class="buttons">
+      <button id="yesBtn" class="btn yes" type="button">Sí quiero 💘</button>
+      <button id="noBtn" class="btn no" type="button">No 😒</button>
+    </div>
+  </div>
+
+  <!-- Fondo de corazones -->
+  <canvas id="overlay-hearts" aria-hidden="true"></canvas> <!-- z: 9998 -->
+  <canvas id="hearts-canvas" aria-hidden="true"></canvas>
+
+  <!-- Contenido principal -->
+  <main class="container">
+    <canvas id="hearts-canvas" aria-hidden="true"></canvas>
+    <header class="hero">
+      <canvas id="overlay-hearts" aria-hidden="true"></canvas> <!-- z: 9998 -->
+      <canvas id="hearts-canvas" aria-hidden="true"></canvas>
+      <h1 id="headline">
+        Para <span id="toName">Karolay</span> 💖
+      </h1>
+      <p class="subtitle">
+        De <span id="fromName">Gianfranco</span> con mucho cariño.
+      </p>
+      <p id="val-countdown-main" class="countdown subtle" aria-hidden="true">
+        00d · 00h · 00m · 00s
+      </p>
+    </header>
+
+    <!-- Importante: UNA sola class -> "card hidden" -->
+    <section id="main-content" class="card hidden" aria-live="polite">
+      <div id="typewriter" class="typewriter"></div>
+
+      <div class="actions">
+        <button id="openBtn" class="btn primary" type="button">Abrir mi mensaje 💌</button>
+        <button id="toggleThemeBtn" class="btn ghost" type="button" aria-pressed="false"
+          title="Cambiar tema">🌙</button>
+      </div>
+    </section>
+
+    <section id="hiddenMessage" class="letter" hidden>
+      <h2>Mi mensaje para ti</h2>
+      <canvas id="hearts-canvas" aria-hidden="true"></canvas>
+      <p id="messageBody">
+        Gracias por ser esa persona que hace mis días más bonitos.
+        Hoy solo quería recordarte que te amo, te respeto y me haces muy feliz. ✨
+      </p>
+      <p class="signature">Con amor, <span id="fromSignature">Gianfranco</span> 💞</p>
+    </section>
+
+    <!-- ========== MODAL CONTRASEÑA (Abre mensaje) ========== -->
+    <div id="passModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="passTitle"
+      aria-describedby="passDesc">
+      <div class="modal__backdrop" data-close="true"></div>
+      <div class="modal__dialog">
+        <header class="modal__header">
+          <h3 id="passTitle" class="modal__title">Mensaje protegido</h3>
+          <button type="button" class="modal__close" id="passCloseBtn" aria-label="Cerrar">✕</button>
+        </header>
+        <div class="modal__body">
+          <p id="passDesc" class="modal__text">
+            Este mensaje estará libre el <strong>14 de febrero</strong>.
+            Si tenés la contraseña, ingresala para verlo ahora.
+          </p>
+          <label for="passInput" class="modal__label">Contraseña</label>
+          <div class="modal__field">
+            <input id="passInput" class="modal__input" type="password" inputmode="text" autocomplete="off"
+              placeholder="Escribí la contraseña" />
+            <button type="button" class="modal__toggle" id="passToggle"
+              aria-label="Mostrar u ocultar contraseña">👁️</button>
+          </div>
+          <p id="passHint" class="modal__hint" aria-live="polite"></p>
+        </div>
+        <footer class="modal__footer">
+          <button type="button" class="btn ghost" id="passCancelBtn">Cancelar</button>
+          <button type="button" class="btn primary" id="passSubmitBtn">Ver mensaje</button>
+        </footer>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <small>Hecho con ❤️ para ti mi amor.</small>
+    </footer>
+  </main>
+
+  <!-- Audio opcional -->
+  <audio id="bgm" loop preload="auto">
+    <!-- <source src="assets/lofi.ogg" type="audio/ogg" /> -->
+    <!-- <source src="assets/lofi.mp3" type="audio/mpeg" /> -->
+  </audio>
+
+  <script src="app.js"></script>
+</body>
+
+</html>

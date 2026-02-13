@@ -468,7 +468,7 @@ Siempre tuyo, ${from || 'Gianfranco'}
         return;
       }
       // Si ya es 14/02 o después, abrir directo
-      heartsConfetti(20000, { intervalMs: 60, batch: 7 });
+      heartsConfetti();
       letter.hidden = false;
       letter.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
